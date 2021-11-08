@@ -32,7 +32,7 @@ namespace MoodAnalyser
 
             catch
             {
-                return "HAPPY";
+                throw new CustomException(CustomException.ExceptionType.NULL_TYPE_EXCEPTION, "Message Should Not Be Null");
             }
             
         }
