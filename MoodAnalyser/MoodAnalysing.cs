@@ -30,7 +30,7 @@ namespace MoodAnalyser
                 }
             }
 
-            catch (NullReferenceException ex)
+            catch
             {
                 return "HAPPY";
             }

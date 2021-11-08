@@ -6,9 +6,7 @@ namespace MoodAnalyserTest
     [TestClass]
     public class UnitTest1
     {
-        /// <summary>
-        /// Given sad should return sad and happy should return happy
-        /// </summary>
+        // Given sad should return sad and happy should return happy
 
         [TestMethod]
         public void SadReturnsSad()
@@ -30,7 +28,7 @@ namespace MoodAnalyserTest
         [TestMethod]
         public void HappyShouldReturn()
         {
-             // TC 1.1 Given "I am in Sad Mood" message should Return Sad
+            // TC 1.1 Given "I am in Sad Mood" message should Return Sad
 
             //Arrange
             string message = "I am in Happy Mood ";
@@ -44,6 +42,7 @@ namespace MoodAnalyserTest
             Assert.AreEqual(expected, mood);
         }
 
+        [TestMethod]
         public void NullReturnsHappy()
         {
             //TC 2.1  Given Null Mood Should Return Happy
