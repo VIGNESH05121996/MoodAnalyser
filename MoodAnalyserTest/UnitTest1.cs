@@ -43,5 +43,21 @@ namespace MoodAnalyserTest
             //Assert
             Assert.AreEqual(expected, mood);
         }
+
+        public void NullReturnsHappy()
+        {
+            //TC 2.1  Given Null Mood Should Return Happy
+
+            //Arrange
+            string message = null;
+            string expected = "HAPPY";
+
+            //Act
+            MoodAnalysing moodAnalysing = new MoodAnalysing(message);
+            string actual = moodAnalysing.AnalyseMood();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -17,14 +17,24 @@ namespace MoodAnalyser
 
         public string AnalyseMood() //declaring AnalyseMood method
         {
-            if(message.ToLower().Contains("sad"))
+            //try and catch is used for exception handling
+            try
             {
-                return "SAD";
+                if (message.ToLower().Contains("sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+
+            catch (NullReferenceException ex)
             {
                 return "HAPPY";
             }
+            
         }
     }
 }
