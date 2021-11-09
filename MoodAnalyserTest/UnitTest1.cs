@@ -131,5 +131,52 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("Constructor not found", ex2.Message);
             }
         }
+
+        [TestMethod]
+        //TC 5.1 given mood Analyse class name should return mood analyser object with parameterised constructor
+
+        public void Given_ParameterisedConstructor_MoodAnalyseClassName_Should_return_MoodAnalyseObject()
+        {
+            object expected = new MoodAnalysing("HAPPY");
+            object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalysing", "MoodAnalysing");
+            expected.Equals(obj);
+        }
+
+
+        [TestMethod]
+        //TC 5.2 Given mood Analyse wrong class name should return exception stating no such class name exist 
+
+        public void Given_ParameterisedConstructor_WrongClassName_Should_return_MoodAnalyseObjectException_Message()
+        {
+            try
+            {
+                object expected = new MoodAnalysing("HAPPY");
+                object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalyserWrong", "MoodAnalysing");
+                expected.Equals(obj);
+            }
+
+            catch (CustomException ex)
+            {
+                Assert.AreEqual("Class not found", ex.Message);
+            }
+        }
+
+
+        //Test Case 5.3 Given mood Analyse wrong constructor name should return exception stating no such consrtructor exist 
+        [TestMethod]
+        public void Given_ParameterisedConstructor_WrongConstrcutorName_Should_return_MoodAnalyseObjectException_Message()
+        {
+            try
+            {
+                object expected = new MoodAnalysing("HAPPY");
+                object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalysing", "MoodAnalyserWrong");
+                expected.Equals(obj);
+            }
+
+            catch (CustomException ex)
+            {
+                Assert.AreEqual("Constructor not found", ex.Message);
+            }
+        }
     }
 }
