@@ -82,5 +82,54 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, ex.Message);
             }
         }
+
+        [TestMethod]
+        //TC 4.1 given mood Analyse class name should return mood analyser object.
+
+        public void ReturnObject()
+        {
+            string message = null;
+            object expected = new MoodAnalysing(message);
+            object obj = MoodAnalysingFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalysing", "MoodAnalysing");
+            expected.Equals(obj);
+        }
+
+        [TestMethod]
+        //TC 4.2 Given mood Analyse wrong class name should return exception stating no such class name exist 
+
+        public void ReturnWrongClassName()
+        {
+            try
+            {
+                string message = null;
+                object expected = new MoodAnalysing(message);
+                object obj = MoodAnalysingFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalysingWrong", "MoodAnalysingWrong");
+                expected.Equals(obj);
+            }
+
+            catch (CustomException ex1)
+            {
+                Assert.AreEqual("Class not found", ex1.Message);
+            }
+        }
+
+        [TestMethod]
+        //TC 4.3 Given wrong constructor name should return improper message in exception  
+
+        public void ReturnWronConstructorName()
+        {
+            try
+            {
+                string message = null;
+                object expected = new MoodAnalysing(message);
+                object obj = MoodAnalysingFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalysing", "MoodAnalysingWrong");
+                expected.Equals(obj);
+            }
+
+            catch (CustomException ex2)
+            {
+                Assert.AreEqual("Constructor not found", ex2.Message);
+            }
+        }
     }
 }
