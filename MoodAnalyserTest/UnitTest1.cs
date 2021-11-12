@@ -138,7 +138,7 @@ namespace MoodAnalyserTest
         public void Given_ParameterisedConstructor_MoodAnalyseClassName_Should_return_MoodAnalyseObject()
         {
             object expected = new MoodAnalysing("HAPPY");
-            object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalysing", "MoodAnalysing");
+            object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalysing", "MoodAnalysing","Happy");
             expected.Equals(obj);
         }
 
@@ -151,7 +151,7 @@ namespace MoodAnalyserTest
             try
             {
                 object expected = new MoodAnalysing("HAPPY");
-                object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalyserWrong", "MoodAnalysing");
+                object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalyserWrong", "MoodAnalysing","Happy");
                 expected.Equals(obj);
             }
 
@@ -162,14 +162,14 @@ namespace MoodAnalyserTest
         }
 
 
-        //Test Case 5.3 Given mood Analyse wrong constructor name should return exception stating no such consrtructor exist 
+        //TC 5.3 Given mood Analyse wrong constructor name should return exception stating no such consrtructor exist 
         [TestMethod]
         public void Given_ParameterisedConstructor_WrongConstrcutorName_Should_return_MoodAnalyseObjectException_Message()
         {
             try
             {
                 object expected = new MoodAnalysing("HAPPY");
-                object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalysing", "MoodAnalyserWrong");
+                object obj = MoodAnalysingFactory.CreateMoodAnalyseParaConstructor("MoodAnalyser.MoodAnalysing", "MoodAnalyserWrong","Happy");
                 expected.Equals(obj);
             }
 
@@ -178,5 +178,16 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("Constructor not found", ex.Message);
             }
         }
+
+
+        //TC 6.1 Invoking Mood Analyser-invokes parameterised constructor method form reflector class
+        [TestMethod]
+        public void ReturnHappyInvoke()
+        {
+            string expected = "HAPPY";
+            string mood = MoodAnalysingFactory.InvokeMoodAnalyse("Happy", "AnalyseMood");
+            Assert.AreEqual(expected, mood);
+        }
+
     }
 }
